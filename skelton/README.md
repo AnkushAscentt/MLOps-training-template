@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-# tdspds-mlops-sagemaker-batch-inference-sample!!!
-=======
-
 # tdspds-mlops-sagemaker-training-sample
->>>>>>> dc788609fe629e1540b18a99619a38b185c052a8
 
 This guide outlines best practices and a recommended structure for organizing Python projects to ensure readability, maintainability, and consistency in your codebase.
 
