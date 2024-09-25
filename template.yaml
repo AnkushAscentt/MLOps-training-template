@@ -17,6 +17,7 @@ spec:
         - team_name
         - pod_name
         - owner
+        - description
       properties:
         team_name:
           title: Team Name
@@ -32,6 +33,10 @@ spec:
           ui:autofocus: true
           ui:options:
             rows: 5
+        description:
+          title: Description
+          type: string
+          description: A description for the component
         instance_type:
           title: Instance Type
           type: string
@@ -46,6 +51,7 @@ spec:
           ui:autofocus: true
           ui:options:
             rows: 5
+
         owner:
           title: Owner
           type: string
@@ -79,6 +85,7 @@ spec:
         values:
           team_name: ${{ parameters.team_name }}
           pod_name: ${{ parameters.pod_name }}
+          description: ${{ parameters.description }}
           instance_type: ${{ parameters.instance_type }}
           instance_count: ${{ parameters.instance_count }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
