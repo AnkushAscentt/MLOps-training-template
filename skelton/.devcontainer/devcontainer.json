@@ -1,0 +1,50 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/postgres
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:3.12-bullseye",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": { "version": "2.36.0" },
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+		  "version": "23.0.7"
+		},
+		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {
+		  "version": "3.4.0"
+		},
+		"ghcr.io/devcontainers/features/aws-cli:1": { },
+		"ghcr.io/devcontainers-contrib/features/flake8:2": {
+			"version": "2.0.17",
+			"plugins": "flake8-black flake8-isort flake8-print flake8-bandit flake8-pylint flake8-builtins flake8-spellcheck flake8-pytest-style flake8-django flake8-fastapi"
+		},
+		"ghcr.io/dhoeric/features/hadolint:1": {}
+	},
+
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash",
+				"python.pythonPath": "/usr/local/bin/python",
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": true,
+				"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+				"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+				"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+				"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+				"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+				"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+				"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+			},
+			"extensions": [
+				"ms-python.python",
+				"esbenp.prettier-vscode",
+				"eamodio.gitlens",
+				"naumovs.color-highlight",
+				"vscode-icons-team.vscode-icons",
+				"ms-vscode.makefile-tools"
+			]
+		}
+	}
+}

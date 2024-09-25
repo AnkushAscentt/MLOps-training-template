@@ -1,0 +1,39 @@
+team-details:
+  team-name: "{{ cookiecutter.team_name }}"
+  pod-name: "{{ cookiecutter.pod_name }}"
+ 
+cost-tags:
+  cost-project: "{{ cookiecutter.team_name }}"
+  cost-team: "{{ cookiecutter.pod_name }}"
+  cost-stack: "my cost stack"
+  cost-layer: "" 
+  cost-env: "dev"
+  cost-misc: "misc text"
+  cost-email: "{{ cookiecutter.team_email_address }}"
+
+feature-store:
+    arn: "arn:aws:iam::521103921695:role/{{ cookiecutter.pod_name }}-fst-store-cross-account-role"
+    feature-group-name: "arn:aws:sagemaker:us-east-1:521103921695:feature-group/tdspds-churn-feature-group-29-19-59-03"
+    fs-output-path: "tdsp-data-products-dev/{{ cookiecutter.pod_name }}/feature-group/{{ cookiecutter.project_name }}/query-results/"
+
+wandb:
+  enable-wandb: true
+  project-name: "{{ cookiecutter.project_name }}"
+  entity-name: "{{ cookiecutter.pod_name }}-team"
+  model-registry: "{{ cookiecutter.project_name }}"
+  model-filename: "{{ cookiecutter.project_name }}"
+  script: src/train.py
+
+job-alert :
+  sns-topic-enabled: true
+  bring-your-own-topic: 
+  email-addresses: {{ cookiecutter.team_email_address }}
+  training-fail-enabled: true
+
+
+# Custom Configuration
+model:
+  test-size: 0.5
+  random-state: 0
+  target-column: Exited
+  model-name: churn

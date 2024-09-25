@@ -1,0 +1,21 @@
+# This config is used by CI/CD Pipeline to deploy a Training Job. Schema for the config is available at
+# https://toyota.atlassian.net/wiki/spaces/TDSP/pages/484348161/CI+CD+Config+Schema
+
+AlgorithmSpecification:
+  TrainingInputMode: "File"
+TrainingJobName: "{{ cookiecutter.project_name }}"
+OutputDataConfig:
+  S3OutputPath: "s3://tdsp-ml-products-dev/{{ cookiecutter.team_name }}/model/{{ cookiecutter.project_name }}"
+
+ResourceConfig:
+  InstanceCount: ${{ values.instance-count }}
+  InstanceType: ${{ values.instance-type }}
+  VolumeSizeInGB: {{ cookiecutter.volume_sizeingb }}
+RetryStrategy:
+  MaximumRetryAttempts: {{ cookiecutter.max_retries }}
+StoppingCondition:
+  MaxRuntimeInSeconds: 600
+HyperParameters:
+  n_estimators: "[25, 50, 100, 150]"
+  max_depth: "[3, 6, 9]"
+  max_leaf_nodes: "[3, 6, 9]"

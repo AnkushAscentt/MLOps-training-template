@@ -1,0 +1,85 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-yaml
+        args:
+          - '--unsafe'
+        exclude: ^(.*/catalog\.yml)
+      - id: check-toml
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-docstring-first
+      - id: check-added-large-files
+      - id: name-tests-test
+        exclude: ^(.*conftest\.py|.*_fixtures{0,1}\.py)
+      - id: check-symlinks
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: detect-aws-credentials
+        args:
+          - '--allow-missing-credentials'
+      - id: detect-private-key
+      - id: mixed-line-ending
+      - id: requirements-txt-fixer
+      - id: check-executables-have-shebangs
+      - id: check-ast
+      - id: check-byte-order-marker
+      - id: check-case-conflict
+      - id: no-commit-to-branch
+        args:
+          - '--branch'
+          - develop
+          - '--branch'
+          - main
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.0.0
+    hooks:
+      - id: autoflake
+        name: autoflake
+        entry: autoflake
+        language: python
+        args:
+          - '--in-place'
+          - '--remove-all-unused-imports'
+          - '--remove-unused-variables'
+          - '--expand-star-imports'
+          - '--ignore-init-module-imports'
+        files: \.py
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
+    hooks:
+      - id: isort
+        args:
+          - '--profile'
+          - black
+          - '--line-length=100'
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        args:
+          - '--line-length=100'
+          - '--extend-exclude=^/notebooks/'
+          - '--extend-exclude=^/.venv/'
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: flake8
+        args:
+          - '--max-line-length=100'
+          - '--max-complexity=18'
+          - '--select=B,C,E,F,W,T4,B9'
+          - '--ignore=E203,E266,E501,W503,F403,F401,E402,W605,F811'
+  # - repo: https://github.com/pycqa/pylint
+  #   rev: pylint-2.6.0
+  #   hooks:
+  #     - id: pylint
+  #       args:
+  #         - '-d duplicate-code'
+  #       name: pylint
+  #       entry: pylint src/
+  #       language: system
+  #       always_run: true
+  #       pass_filenames: false
