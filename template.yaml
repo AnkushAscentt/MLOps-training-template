@@ -24,6 +24,7 @@ spec:
           type: string
           description: Chofer/DevEx Team Name
           ui:autofocus: true
+          pattern: "^[^\\s]+$"
           ui:options:
             rows: 5
         pod_name:
