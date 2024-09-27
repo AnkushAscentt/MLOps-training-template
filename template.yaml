@@ -25,6 +25,7 @@ spec:
           description: Chofer/DevEx Team Name
           ui:autofocus: true
           pattern: "^[^\\s]+$"
+          errorMessage: "Team Name should be a single word with no spaces."
           ui:options:
             rows: 5
         pod_name:
